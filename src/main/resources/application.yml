@@ -1,0 +1,37 @@
+server:
+  port: 8080
+  tomcat:
+    remote-ip-header: x-forwarded-for
+    protocol-header: x-forwarded-proto
+    use-relative-redirects: true
+
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    database: mysql
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    generate-ddl: true
+    show-sql: true
+    open-in-view: false
+  data:
+    jpa:
+      repositories:
+        enabled: true
+  datasource:
+    url: jdbc:mysql://34.146.101.145:3306/docapp
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+jwt:
+  header: Authorization
+  secret: secret
+  expiration: 604800
